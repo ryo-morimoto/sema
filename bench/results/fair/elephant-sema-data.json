@@ -1,0 +1,721 @@
+{
+  "functions": [
+    {
+      "name": "formatAnalyticsSummary",
+      "kind": "ArrowFunction",
+      "signature": "(record: AnalyticsRecord) => string",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "da122d730088d724"
+    },
+    {
+      "name": "formatInventorySummary",
+      "kind": "ArrowFunction",
+      "signature": "(record: InventoryRecord) => string",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "8af173061cd62147"
+    },
+    {
+      "name": "formatOrderSummary",
+      "kind": "ArrowFunction",
+      "signature": "(record: OrderRecord) => string",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "aedb73d09dd20a26"
+    },
+    {
+      "name": "formatUserSummary",
+      "kind": "ArrowFunction",
+      "signature": "(record: UserRecord) => string",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "f221308ebd6ba78c"
+    },
+    {
+      "name": "AnalyticsService",
+      "kind": "ClassDeclaration",
+      "signature": "typeof AnalyticsService",
+      "purity": "effectful",
+      "effects": [],
+      "capabilities": [],
+      "dependsOn": [
+        "AnalyticsFilter",
+        "AnalyticsId",
+        "AnalyticsRecord",
+        "AnalyticsStats",
+        "OrderFilter",
+        "OrderRecord",
+        "OrderStats",
+        "computeAnalyticsStats",
+        "diffAnalyticsRecords",
+        "fetchAnalyticssFromAPI",
+        "filterAnalyticss",
+        "formatAnalyticsSummary",
+        "loadAnalyticssFromDisk",
+        "logAnalyticsEvent",
+        "mergeAnalyticsRecords",
+        "saveAnalyticssToDisk",
+        "sortAnalyticss",
+        "validateAnalytics"
+      ],
+      "syntaxHash": "c7590b93d50a56c5"
+    },
+    {
+      "name": "InventoryService",
+      "kind": "ClassDeclaration",
+      "signature": "typeof InventoryService",
+      "purity": "effectful",
+      "effects": [],
+      "capabilities": [],
+      "dependsOn": [
+        "InventoryFilter",
+        "InventoryId",
+        "InventoryRecord",
+        "InventoryStats",
+        "OrderFilter",
+        "OrderRecord",
+        "OrderStats",
+        "computeInventoryStats",
+        "diffInventoryRecords",
+        "fetchInventorysFromAPI",
+        "filterInventorys",
+        "formatInventorySummary",
+        "loadInventorysFromDisk",
+        "logInventoryEvent",
+        "mergeInventoryRecords",
+        "saveInventorysToDisk",
+        "sortInventorys",
+        "validateInventory"
+      ],
+      "syntaxHash": "78aeac00cb73963d"
+    },
+    {
+      "name": "OrderService",
+      "kind": "ClassDeclaration",
+      "signature": "typeof OrderService",
+      "purity": "effectful",
+      "effects": [],
+      "capabilities": [],
+      "dependsOn": [
+        "OrderFilter",
+        "OrderId",
+        "OrderRecord",
+        "OrderStats",
+        "computeOrderStats",
+        "diffOrderRecords",
+        "fetchOrdersFromAPI",
+        "filterOrders",
+        "formatOrderSummary",
+        "loadOrdersFromDisk",
+        "logOrderEvent",
+        "mergeOrderRecords",
+        "saveOrdersToDisk",
+        "sortOrders",
+        "validateOrder"
+      ],
+      "syntaxHash": "8632695678f35865"
+    },
+    {
+      "name": "UserService",
+      "kind": "ClassDeclaration",
+      "signature": "typeof UserService",
+      "purity": "effectful",
+      "effects": [],
+      "capabilities": [],
+      "dependsOn": [
+        "OrderFilter",
+        "OrderRecord",
+        "OrderStats",
+        "UserFilter",
+        "UserId",
+        "UserRecord",
+        "UserStats",
+        "computeUserStats",
+        "diffUserRecords",
+        "fetchUsersFromAPI",
+        "filterUsers",
+        "formatUserSummary",
+        "loadUsersFromDisk",
+        "logUserEvent",
+        "mergeUserRecords",
+        "saveUsersToDisk",
+        "sortUsers",
+        "validateUser"
+      ],
+      "syntaxHash": "b182c00c3a689601"
+    },
+    {
+      "name": "computeAnalyticsStats",
+      "kind": "FunctionDeclaration",
+      "signature": "(records: AnalyticsRecord[]) => AnalyticsStats",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "a7023a2ac9a1ff93"
+    },
+    {
+      "name": "computeInventoryStats",
+      "kind": "FunctionDeclaration",
+      "signature": "(records: InventoryRecord[]) => InventoryStats",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "b34d3fe89f86e57f"
+    },
+    {
+      "name": "computeOrderStats",
+      "kind": "FunctionDeclaration",
+      "signature": "(records: OrderRecord[]) => OrderStats",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "64a23835786bcb73"
+    },
+    {
+      "name": "computeUserStats",
+      "kind": "FunctionDeclaration",
+      "signature": "(records: UserRecord[]) => UserStats",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "6d7306094a16eeac"
+    },
+    {
+      "name": "diffAnalyticsRecords",
+      "kind": "FunctionDeclaration",
+      "signature": "(before: AnalyticsRecord, after: AnalyticsRecord) => Record<string, { from: unknown; to: unknown; }>",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "24f9f9b530b6b7df"
+    },
+    {
+      "name": "diffInventoryRecords",
+      "kind": "FunctionDeclaration",
+      "signature": "(before: InventoryRecord, after: InventoryRecord) => Record<string, { from: unknown; to: unknown; }>",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "1329322f76f53dbc"
+    },
+    {
+      "name": "diffOrderRecords",
+      "kind": "FunctionDeclaration",
+      "signature": "(before: OrderRecord, after: OrderRecord) => Record<string, { from: unknown; to: unknown; }>",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "438beac67de1890e"
+    },
+    {
+      "name": "diffUserRecords",
+      "kind": "FunctionDeclaration",
+      "signature": "(before: UserRecord, after: UserRecord) => Record<string, { from: unknown; to: unknown; }>",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "9bbed5982dcbf378"
+    },
+    {
+      "name": "fetchAnalyticssFromAPI",
+      "kind": "FunctionDeclaration",
+      "signature": "(endpoint: string) => Promise<AnalyticsRecord[]>",
+      "purity": "effectful",
+      "effects": [
+        "async"
+      ],
+      "capabilities": [
+        "net:https"
+      ],
+      "syntaxHash": "41b1555f5a0e3be5"
+    },
+    {
+      "name": "fetchInventorysFromAPI",
+      "kind": "FunctionDeclaration",
+      "signature": "(endpoint: string) => Promise<InventoryRecord[]>",
+      "purity": "effectful",
+      "effects": [
+        "async"
+      ],
+      "capabilities": [
+        "net:https"
+      ],
+      "syntaxHash": "29857366460aae48"
+    },
+    {
+      "name": "fetchOrdersFromAPI",
+      "kind": "FunctionDeclaration",
+      "signature": "(endpoint: string) => Promise<OrderRecord[]>",
+      "purity": "effectful",
+      "effects": [
+        "async"
+      ],
+      "capabilities": [
+        "net:https"
+      ],
+      "syntaxHash": "dbaa079da290feb3"
+    },
+    {
+      "name": "fetchUsersFromAPI",
+      "kind": "FunctionDeclaration",
+      "signature": "(endpoint: string) => Promise<UserRecord[]>",
+      "purity": "effectful",
+      "effects": [
+        "async"
+      ],
+      "capabilities": [
+        "net:https"
+      ],
+      "syntaxHash": "6482c6e32f715d60"
+    },
+    {
+      "name": "filterAnalyticss",
+      "kind": "FunctionDeclaration",
+      "signature": "(records: AnalyticsRecord[], filter: AnalyticsFilter) => AnalyticsRecord[]",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "3f47f41880eca32b"
+    },
+    {
+      "name": "filterInventorys",
+      "kind": "FunctionDeclaration",
+      "signature": "(records: InventoryRecord[], filter: InventoryFilter) => InventoryRecord[]",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "115fc9799117bfbe"
+    },
+    {
+      "name": "filterOrders",
+      "kind": "FunctionDeclaration",
+      "signature": "(records: OrderRecord[], filter: OrderFilter) => OrderRecord[]",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "6f6edc4ae6a41006"
+    },
+    {
+      "name": "filterUsers",
+      "kind": "FunctionDeclaration",
+      "signature": "(records: UserRecord[], filter: UserFilter) => UserRecord[]",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "9235f9e9a81ae92b"
+    },
+    {
+      "name": "loadAnalyticssFromDisk",
+      "kind": "FunctionDeclaration",
+      "signature": "(path: string) => Promise<AnalyticsRecord[]>",
+      "purity": "effectful",
+      "effects": [
+        "async"
+      ],
+      "capabilities": [
+        "fs:read",
+        "fs:write"
+      ],
+      "syntaxHash": "cc8d04340e1c1b70"
+    },
+    {
+      "name": "loadInventorysFromDisk",
+      "kind": "FunctionDeclaration",
+      "signature": "(path: string) => Promise<InventoryRecord[]>",
+      "purity": "effectful",
+      "effects": [
+        "async"
+      ],
+      "capabilities": [
+        "fs:read",
+        "fs:write"
+      ],
+      "syntaxHash": "82b9cbfeeac6ca9d"
+    },
+    {
+      "name": "loadOrdersFromDisk",
+      "kind": "FunctionDeclaration",
+      "signature": "(path: string) => Promise<OrderRecord[]>",
+      "purity": "effectful",
+      "effects": [
+        "async"
+      ],
+      "capabilities": [
+        "fs:read",
+        "fs:write"
+      ],
+      "syntaxHash": "087fd06eea2b1570"
+    },
+    {
+      "name": "loadUsersFromDisk",
+      "kind": "FunctionDeclaration",
+      "signature": "(path: string) => Promise<UserRecord[]>",
+      "purity": "effectful",
+      "effects": [
+        "async"
+      ],
+      "capabilities": [
+        "fs:read",
+        "fs:write"
+      ],
+      "syntaxHash": "9b5706247e6ad0fb"
+    },
+    {
+      "name": "logAnalyticsEvent",
+      "kind": "FunctionDeclaration",
+      "signature": "(event: AnalyticsEvent) => void",
+      "purity": "effectful",
+      "effects": [],
+      "capabilities": [
+        "io:console"
+      ],
+      "syntaxHash": "d78dc1f0b0e28982"
+    },
+    {
+      "name": "logInventoryEvent",
+      "kind": "FunctionDeclaration",
+      "signature": "(event: InventoryEvent) => void",
+      "purity": "effectful",
+      "effects": [],
+      "capabilities": [
+        "io:console"
+      ],
+      "syntaxHash": "b0d4b69e622cf4a5"
+    },
+    {
+      "name": "logOrderEvent",
+      "kind": "FunctionDeclaration",
+      "signature": "(event: OrderEvent) => void",
+      "purity": "effectful",
+      "effects": [],
+      "capabilities": [
+        "io:console"
+      ],
+      "syntaxHash": "68a09a508d17b202"
+    },
+    {
+      "name": "logUserEvent",
+      "kind": "FunctionDeclaration",
+      "signature": "(event: UserEvent) => void",
+      "purity": "effectful",
+      "effects": [],
+      "capabilities": [
+        "io:console"
+      ],
+      "syntaxHash": "8d140fb252f579f3"
+    },
+    {
+      "name": "mergeAnalyticsRecords",
+      "kind": "FunctionDeclaration",
+      "signature": "(existing: AnalyticsRecord[], incoming: AnalyticsRecord[]) => AnalyticsRecord[]",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "4d56dec199060969"
+    },
+    {
+      "name": "mergeInventoryRecords",
+      "kind": "FunctionDeclaration",
+      "signature": "(existing: InventoryRecord[], incoming: InventoryRecord[]) => InventoryRecord[]",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "313167f98735c326"
+    },
+    {
+      "name": "mergeOrderRecords",
+      "kind": "FunctionDeclaration",
+      "signature": "(existing: OrderRecord[], incoming: OrderRecord[]) => OrderRecord[]",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "5625e8923cfa26cc"
+    },
+    {
+      "name": "mergeUserRecords",
+      "kind": "FunctionDeclaration",
+      "signature": "(existing: UserRecord[], incoming: UserRecord[]) => UserRecord[]",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "c7d1c7990f5c018d"
+    },
+    {
+      "name": "paginateAnalyticss",
+      "kind": "FunctionDeclaration",
+      "signature": "(records: AnalyticsRecord[], page: number, pageSize: number) => { data: AnalyticsRecord[]; total: number; pages: number; }",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "b0987d331f599c74"
+    },
+    {
+      "name": "paginateInventorys",
+      "kind": "FunctionDeclaration",
+      "signature": "(records: InventoryRecord[], page: number, pageSize: number) => { data: InventoryRecord[]; total: number; pages: number; }",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "95b181114bdd2dee"
+    },
+    {
+      "name": "paginateOrders",
+      "kind": "FunctionDeclaration",
+      "signature": "(records: OrderRecord[], page: number, pageSize: number) => { data: OrderRecord[]; total: number; pages: number; }",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "ebec52ef16eb710d"
+    },
+    {
+      "name": "paginateUsers",
+      "kind": "FunctionDeclaration",
+      "signature": "(records: UserRecord[], page: number, pageSize: number) => { data: UserRecord[]; total: number; pages: number; }",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "5f0fb8f025e107ce"
+    },
+    {
+      "name": "saveAnalyticssToDisk",
+      "kind": "FunctionDeclaration",
+      "signature": "(path: string, records: AnalyticsRecord[]) => Promise<void>",
+      "purity": "effectful",
+      "effects": [
+        "async"
+      ],
+      "capabilities": [
+        "fs:read",
+        "fs:write"
+      ],
+      "syntaxHash": "485255e188354fac"
+    },
+    {
+      "name": "saveInventorysToDisk",
+      "kind": "FunctionDeclaration",
+      "signature": "(path: string, records: InventoryRecord[]) => Promise<void>",
+      "purity": "effectful",
+      "effects": [
+        "async"
+      ],
+      "capabilities": [
+        "fs:read",
+        "fs:write"
+      ],
+      "syntaxHash": "9f1f9ed6528b81e0"
+    },
+    {
+      "name": "saveOrdersToDisk",
+      "kind": "FunctionDeclaration",
+      "signature": "(path: string, records: OrderRecord[]) => Promise<void>",
+      "purity": "effectful",
+      "effects": [
+        "async"
+      ],
+      "capabilities": [
+        "fs:read",
+        "fs:write"
+      ],
+      "syntaxHash": "965eeeeb402d753e"
+    },
+    {
+      "name": "saveUsersToDisk",
+      "kind": "FunctionDeclaration",
+      "signature": "(path: string, records: UserRecord[]) => Promise<void>",
+      "purity": "effectful",
+      "effects": [
+        "async"
+      ],
+      "capabilities": [
+        "fs:read",
+        "fs:write"
+      ],
+      "syntaxHash": "444f296502f6cd8d"
+    },
+    {
+      "name": "sortAnalyticss",
+      "kind": "FunctionDeclaration",
+      "signature": "(records: AnalyticsRecord[], key: keyof AnalyticsRecord, desc?: boolean) => AnalyticsRecord[]",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "3baa81851c0bec61"
+    },
+    {
+      "name": "sortInventorys",
+      "kind": "FunctionDeclaration",
+      "signature": "(records: InventoryRecord[], key: keyof InventoryRecord, desc?: boolean) => InventoryRecord[]",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "c9de5420c32fd908"
+    },
+    {
+      "name": "sortOrders",
+      "kind": "FunctionDeclaration",
+      "signature": "(records: OrderRecord[], key: keyof OrderRecord, desc?: boolean) => OrderRecord[]",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "4bc5506cb2d4f79b"
+    },
+    {
+      "name": "sortUsers",
+      "kind": "FunctionDeclaration",
+      "signature": "(records: UserRecord[], key: keyof UserRecord, desc?: boolean) => UserRecord[]",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "f2e0afe8c8f1a911"
+    },
+    {
+      "name": "validateAnalytics",
+      "kind": "FunctionDeclaration",
+      "signature": "(record: AnalyticsRecord) => string[]",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "f44377cece4762fe"
+    },
+    {
+      "name": "validateInventory",
+      "kind": "FunctionDeclaration",
+      "signature": "(record: InventoryRecord) => string[]",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "8962f3ba8c263914"
+    },
+    {
+      "name": "validateOrder",
+      "kind": "FunctionDeclaration",
+      "signature": "(record: OrderRecord) => string[]",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "ae72ee4d23438a56"
+    },
+    {
+      "name": "validateUser",
+      "kind": "FunctionDeclaration",
+      "signature": "(record: UserRecord) => string[]",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "80d95e1c0f4de0f4"
+    }
+  ],
+  "types": [
+    {
+      "name": "AnalyticsStatus",
+      "kind": "EnumDeclaration"
+    },
+    {
+      "name": "InventoryStatus",
+      "kind": "EnumDeclaration"
+    },
+    {
+      "name": "OrderStatus",
+      "kind": "EnumDeclaration"
+    },
+    {
+      "name": "UserStatus",
+      "kind": "EnumDeclaration"
+    },
+    {
+      "name": "AnalyticsEvent",
+      "kind": "InterfaceDeclaration"
+    },
+    {
+      "name": "AnalyticsFilter",
+      "kind": "InterfaceDeclaration"
+    },
+    {
+      "name": "AnalyticsRecord",
+      "kind": "InterfaceDeclaration"
+    },
+    {
+      "name": "AnalyticsStats",
+      "kind": "InterfaceDeclaration"
+    },
+    {
+      "name": "InventoryEvent",
+      "kind": "InterfaceDeclaration"
+    },
+    {
+      "name": "InventoryFilter",
+      "kind": "InterfaceDeclaration"
+    },
+    {
+      "name": "InventoryRecord",
+      "kind": "InterfaceDeclaration"
+    },
+    {
+      "name": "InventoryStats",
+      "kind": "InterfaceDeclaration"
+    },
+    {
+      "name": "OrderEvent",
+      "kind": "InterfaceDeclaration"
+    },
+    {
+      "name": "OrderFilter",
+      "kind": "InterfaceDeclaration"
+    },
+    {
+      "name": "OrderRecord",
+      "kind": "InterfaceDeclaration"
+    },
+    {
+      "name": "OrderStats",
+      "kind": "InterfaceDeclaration"
+    },
+    {
+      "name": "UserEvent",
+      "kind": "InterfaceDeclaration"
+    },
+    {
+      "name": "UserFilter",
+      "kind": "InterfaceDeclaration"
+    },
+    {
+      "name": "UserRecord",
+      "kind": "InterfaceDeclaration"
+    },
+    {
+      "name": "UserStats",
+      "kind": "InterfaceDeclaration"
+    },
+    {
+      "name": "AnalyticsId",
+      "kind": "TypeAliasDeclaration"
+    },
+    {
+      "name": "InventoryId",
+      "kind": "TypeAliasDeclaration"
+    },
+    {
+      "name": "OrderId",
+      "kind": "TypeAliasDeclaration"
+    },
+    {
+      "name": "UserId",
+      "kind": "TypeAliasDeclaration"
+    }
+  ],
+  "imports": [
+    "fs",
+    "https"
+  ],
+  "capabilities": [
+    "fs:read",
+    "fs:write",
+    "io:console",
+    "net:https"
+  ]
+}

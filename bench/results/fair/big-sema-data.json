@@ -1,0 +1,332 @@
+{
+  "functions": [
+    {
+      "name": "buildSearchIndex",
+      "kind": "ArrowFunction",
+      "signature": "(products: Product[]) => Map<string, string[]>",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "eea033ec689e8248"
+    },
+    {
+      "name": "OrderProcessor",
+      "kind": "ClassDeclaration",
+      "signature": "typeof OrderProcessor",
+      "purity": "effectful",
+      "effects": [],
+      "capabilities": [],
+      "dependsOn": [
+        "Address",
+        "CartItem",
+        "CustomerId",
+        "Discount",
+        "InventoryAlert",
+        "Money",
+        "Order",
+        "OrderId",
+        "OrderStatus",
+        "PaymentMethod",
+        "Product",
+        "ProductId",
+        "backupOrders",
+        "calculateTotal",
+        "checkInventory",
+        "fetchProductUpdates",
+        "formatOrderSummary",
+        "loadProductCatalog",
+        "logOrderEvent",
+        "saveOrder",
+        "sendOrderConfirmation",
+        "validateOrder"
+      ],
+      "syntaxHash": "5fda58211ca462c5"
+    },
+    {
+      "name": "applyDiscount",
+      "kind": "FunctionDeclaration",
+      "signature": "(subtotal: Money, discount: Discount) => Money",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "755ce32953dab785"
+    },
+    {
+      "name": "backupOrders",
+      "kind": "FunctionDeclaration",
+      "signature": "(dir: string, orders: Order[]) => Promise<void>",
+      "purity": "effectful",
+      "effects": [
+        "async"
+      ],
+      "capabilities": [
+        "fs:read",
+        "fs:write"
+      ],
+      "syntaxHash": "451f0dd0c3ee283a"
+    },
+    {
+      "name": "calculateShipping",
+      "kind": "FunctionDeclaration",
+      "signature": "(items: CartItem[], rate: ShippingRate) => Money",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "49d2ea1486502f4c"
+    },
+    {
+      "name": "calculateSubtotal",
+      "kind": "FunctionDeclaration",
+      "signature": "(items: CartItem[]) => Money",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "b2668dcdeb1bb069"
+    },
+    {
+      "name": "calculateTax",
+      "kind": "FunctionDeclaration",
+      "signature": "(subtotal: Money, taxRate: number) => Money",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "579438d8c9971aea"
+    },
+    {
+      "name": "calculateTotal",
+      "kind": "FunctionDeclaration",
+      "signature": "(items: CartItem[], discount: Discount | null, taxRate: number, shippingRate: ShippingRate) => Money",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "7eef3bbb63ea371e"
+    },
+    {
+      "name": "checkInventory",
+      "kind": "FunctionDeclaration",
+      "signature": "(products: Product[], threshold: number) => InventoryAlert[]",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "7daf8c0e12130edb"
+    },
+    {
+      "name": "fetchExchangeRate",
+      "kind": "FunctionDeclaration",
+      "signature": "(from: string, to: string) => Promise<number>",
+      "purity": "effectful",
+      "effects": [
+        "async"
+      ],
+      "capabilities": [
+        "net:https"
+      ],
+      "syntaxHash": "18cee3e91b166af0"
+    },
+    {
+      "name": "fetchProductUpdates",
+      "kind": "FunctionDeclaration",
+      "signature": "(since: Date) => Promise<Product[]>",
+      "purity": "effectful",
+      "effects": [
+        "async"
+      ],
+      "capabilities": [
+        "net:https"
+      ],
+      "syntaxHash": "ded75c96c9429f20"
+    },
+    {
+      "name": "filterOrdersByStatus",
+      "kind": "FunctionDeclaration",
+      "signature": "(orders: Order[], status: OrderStatus) => Order[]",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "77f93ecbc664b071"
+    },
+    {
+      "name": "formatMoney",
+      "kind": "FunctionDeclaration",
+      "signature": "(money: Money) => string",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "06bd53742d1a9c87"
+    },
+    {
+      "name": "formatOrderSummary",
+      "kind": "FunctionDeclaration",
+      "signature": "(order: Order) => string",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "b384dac373d1530b"
+    },
+    {
+      "name": "groupItemsByCategory",
+      "kind": "FunctionDeclaration",
+      "signature": "(items: CartItem[], products: Map<string, Product>) => Map<string, CartItem[]>",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "b5362408c5a511a4"
+    },
+    {
+      "name": "isDiscountValid",
+      "kind": "FunctionDeclaration",
+      "signature": "(discount: Discount) => boolean",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "6127c71690cf0f69"
+    },
+    {
+      "name": "loadProductCatalog",
+      "kind": "FunctionDeclaration",
+      "signature": "(path: string) => Promise<Product[]>",
+      "purity": "effectful",
+      "effects": [
+        "async"
+      ],
+      "capabilities": [
+        "fs:read",
+        "fs:write"
+      ],
+      "syntaxHash": "bbf3bcef03f061a5"
+    },
+    {
+      "name": "logOrderEvent",
+      "kind": "FunctionDeclaration",
+      "signature": "(event: OrderEvent) => void",
+      "purity": "effectful",
+      "effects": [],
+      "capabilities": [
+        "io:console"
+      ],
+      "syntaxHash": "7b42fde71733169d"
+    },
+    {
+      "name": "saveOrder",
+      "kind": "FunctionDeclaration",
+      "signature": "(path: string, order: Order) => Promise<void>",
+      "purity": "effectful",
+      "effects": [
+        "async"
+      ],
+      "capabilities": [
+        "fs:read",
+        "fs:write"
+      ],
+      "syntaxHash": "013e608c7dbc2e33"
+    },
+    {
+      "name": "searchProducts",
+      "kind": "FunctionDeclaration",
+      "signature": "(query: string, index: Map<string, string[]>) => string[]",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "41d7cc0b947acabe"
+    },
+    {
+      "name": "sendOrderConfirmation",
+      "kind": "FunctionDeclaration",
+      "signature": "(order: Order) => Promise<void>",
+      "purity": "effectful",
+      "effects": [
+        "async"
+      ],
+      "capabilities": [
+        "net:https"
+      ],
+      "syntaxHash": "71414ac8cdb45139"
+    },
+    {
+      "name": "sortOrdersByDate",
+      "kind": "FunctionDeclaration",
+      "signature": "(orders: Order[]) => Order[]",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "86a5fff6a39d7671"
+    },
+    {
+      "name": "validateOrder",
+      "kind": "FunctionDeclaration",
+      "signature": "(order: Order) => string[]",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "3061d231f8fbd329"
+    }
+  ],
+  "types": [
+    {
+      "name": "OrderStatus",
+      "kind": "EnumDeclaration"
+    },
+    {
+      "name": "PaymentMethod",
+      "kind": "EnumDeclaration"
+    },
+    {
+      "name": "Address",
+      "kind": "InterfaceDeclaration"
+    },
+    {
+      "name": "CartItem",
+      "kind": "InterfaceDeclaration"
+    },
+    {
+      "name": "Discount",
+      "kind": "InterfaceDeclaration"
+    },
+    {
+      "name": "InventoryAlert",
+      "kind": "InterfaceDeclaration"
+    },
+    {
+      "name": "Order",
+      "kind": "InterfaceDeclaration"
+    },
+    {
+      "name": "OrderEvent",
+      "kind": "InterfaceDeclaration"
+    },
+    {
+      "name": "Product",
+      "kind": "InterfaceDeclaration"
+    },
+    {
+      "name": "ShippingRate",
+      "kind": "InterfaceDeclaration"
+    },
+    {
+      "name": "CustomerId",
+      "kind": "TypeAliasDeclaration"
+    },
+    {
+      "name": "Money",
+      "kind": "TypeAliasDeclaration"
+    },
+    {
+      "name": "OrderId",
+      "kind": "TypeAliasDeclaration"
+    },
+    {
+      "name": "ProductId",
+      "kind": "TypeAliasDeclaration"
+    }
+  ],
+  "imports": [
+    "fs",
+    "https"
+  ],
+  "capabilities": [
+    "fs:read",
+    "fs:write",
+    "io:console",
+    "net:https"
+  ]
+}
