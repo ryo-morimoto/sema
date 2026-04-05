@@ -1,0 +1,118 @@
+{
+  "structure": {
+    "domains": [
+      "Analytics",
+      "Inventory",
+      "Order",
+      "User"
+    ],
+    "note": "4 domains with identical structure. {D} = domain name."
+  },
+  "patterns": [
+    {
+      "pattern": "(28 functions)",
+      "kind": "FunctionDeclaration",
+      "purity": "pure",
+      "count": 28
+    },
+    {
+      "pattern": "{D}Disk",
+      "kind": "FunctionDeclaration",
+      "purity": "effectful",
+      "effects": [
+        "async"
+      ],
+      "capabilities": [
+        "fs:read",
+        "fs:write"
+      ],
+      "count": 8
+    },
+    {
+      "pattern": "{D}Service",
+      "kind": "ClassDeclaration",
+      "purity": "effectful",
+      "count": 4
+    },
+    {
+      "pattern": "fetch{D}sFromAPI",
+      "kind": "FunctionDeclaration",
+      "purity": "effectful",
+      "effects": [
+        "async"
+      ],
+      "capabilities": [
+        "net:https"
+      ],
+      "count": 4
+    },
+    {
+      "pattern": "format{D}Summary",
+      "kind": "ArrowFunction",
+      "purity": "pure",
+      "count": 4
+    },
+    {
+      "pattern": "log{D}Event",
+      "kind": "FunctionDeclaration",
+      "purity": "effectful",
+      "capabilities": [
+        "io:console"
+      ],
+      "count": 4
+    }
+  ],
+  "types": [
+    {
+      "kind": "EnumDeclaration",
+      "pattern": "{D}Status",
+      "names": [
+        "AnalyticsStatus",
+        "InventoryStatus",
+        "OrderStatus",
+        "UserStatus"
+      ]
+    },
+    {
+      "kind": "InterfaceDeclaration",
+      "names": [
+        "AnalyticsEvent",
+        "AnalyticsFilter",
+        "AnalyticsRecord",
+        "AnalyticsStats",
+        "InventoryEvent",
+        "InventoryFilter",
+        "InventoryRecord",
+        "InventoryStats",
+        "OrderEvent",
+        "OrderFilter",
+        "OrderRecord",
+        "OrderStats",
+        "UserEvent",
+        "UserFilter",
+        "UserRecord",
+        "UserStats"
+      ]
+    },
+    {
+      "kind": "TypeAliasDeclaration",
+      "pattern": "{D}Id",
+      "names": [
+        "AnalyticsId",
+        "InventoryId",
+        "OrderId",
+        "UserId"
+      ]
+    }
+  ],
+  "imports": [
+    "fs",
+    "https"
+  ],
+  "capabilities": [
+    "fs:read",
+    "fs:write",
+    "io:console",
+    "net:https"
+  ]
+}

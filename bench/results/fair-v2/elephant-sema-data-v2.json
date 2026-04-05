@@ -1,0 +1,164 @@
+{
+  "structure": {
+    "domains": [
+      "Analytics",
+      "Inventory",
+      "Order",
+      "User"
+    ],
+    "note": "4 domains with identical structure. {D} = domain name."
+  },
+  "patterns": [
+    {
+      "purity": "pure",
+      "names": [
+        "computeAnalyticsStats",
+        "computeInventoryStats",
+        "computeOrderStats",
+        "computeUserStats",
+        "diffAnalyticsRecords",
+        "diffInventoryRecords",
+        "diffOrderRecords",
+        "diffUserRecords",
+        "filterAnalyticss",
+        "filterInventorys",
+        "filterOrders",
+        "filterUsers",
+        "mergeAnalyticsRecords",
+        "mergeInventoryRecords",
+        "mergeOrderRecords",
+        "mergeUserRecords",
+        "paginateAnalyticss",
+        "paginateInventorys",
+        "paginateOrders",
+        "paginateUsers",
+        "sortAnalyticss",
+        "sortInventorys",
+        "sortOrders",
+        "sortUsers",
+        "validateAnalytics",
+        "validateInventory",
+        "validateOrder",
+        "validateUser"
+      ]
+    },
+    {
+      "purity": "effectful",
+      "effects": [
+        "async"
+      ],
+      "capabilities": [
+        "fs:read",
+        "fs:write"
+      ],
+      "names": [
+        "loadAnalyticssFromDisk",
+        "loadInventorysFromDisk",
+        "loadOrdersFromDisk",
+        "loadUsersFromDisk",
+        "saveAnalyticssToDisk",
+        "saveInventorysToDisk",
+        "saveOrdersToDisk",
+        "saveUsersToDisk"
+      ]
+    },
+    {
+      "purity": "effectful",
+      "names": [
+        "AnalyticsService",
+        "InventoryService",
+        "OrderService",
+        "UserService"
+      ]
+    },
+    {
+      "purity": "effectful",
+      "effects": [
+        "async"
+      ],
+      "capabilities": [
+        "net:https"
+      ],
+      "names": [
+        "fetchAnalyticssFromAPI",
+        "fetchInventorysFromAPI",
+        "fetchOrdersFromAPI",
+        "fetchUsersFromAPI"
+      ]
+    },
+    {
+      "purity": "pure",
+      "names": [
+        "formatAnalyticsSummary",
+        "formatInventorySummary",
+        "formatOrderSummary",
+        "formatUserSummary"
+      ]
+    },
+    {
+      "purity": "effectful",
+      "capabilities": [
+        "io:console"
+      ],
+      "names": [
+        "logAnalyticsEvent",
+        "logInventoryEvent",
+        "logOrderEvent",
+        "logUserEvent"
+      ]
+    }
+  ],
+  "types": [
+    {
+      "kind": "EnumDeclaration",
+      "pattern": "{D}Status",
+      "names": [
+        "AnalyticsStatus",
+        "InventoryStatus",
+        "OrderStatus",
+        "UserStatus"
+      ]
+    },
+    {
+      "kind": "InterfaceDeclaration",
+      "names": [
+        "AnalyticsEvent",
+        "AnalyticsFilter",
+        "AnalyticsRecord",
+        "AnalyticsStats",
+        "InventoryEvent",
+        "InventoryFilter",
+        "InventoryRecord",
+        "InventoryStats",
+        "OrderEvent",
+        "OrderFilter",
+        "OrderRecord",
+        "OrderStats",
+        "UserEvent",
+        "UserFilter",
+        "UserRecord",
+        "UserStats"
+      ]
+    },
+    {
+      "kind": "TypeAliasDeclaration",
+      "pattern": "{D}Id",
+      "names": [
+        "AnalyticsId",
+        "InventoryId",
+        "OrderId",
+        "UserId"
+      ]
+    }
+  ],
+  "imports": [
+    "fs",
+    "https"
+  ],
+  "capabilities": [
+    "fs:read",
+    "fs:write",
+    "io:console",
+    "net:https"
+  ]
+}
