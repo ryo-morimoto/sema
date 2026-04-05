@@ -1,0 +1,35 @@
+{
+  "name": "sema",
+  "version": "0.1.0",
+  "description": "Semantic substrate for TypeScript — normalized tree, content-addressed identity, contract overlays, agent surface",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "sema-mcp": "dist/mcp/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "dev": "tsx src/index.ts",
+    "mcp": "tsx src/mcp/index.ts"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@10.33.0",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "typescript": "~5.8.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.2",
+    "@vitest/coverage-v8": "^3.1.0",
+    "tsx": "^4.19.0",
+    "vitest": "^3.1.0"
+  }
+}

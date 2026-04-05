@@ -1,0 +1,53 @@
+ソースコードと sema 分析結果を照合した結果です。
+
+```json
+{
+  "pure_functions": [
+    "filterTasks",
+    "sortByPriority",
+    "formatTaskSummary"
+  ],
+  "effectful_functions": [
+    {
+      "name": "loadTasksFromDisk",
+      "effects": ["async", "fs:read"]
+    },
+    {
+      "name": "saveTasksToDisk",
+      "effects": ["async", "fs:write"]
+    },
+    {
+      "name": "fetchRemoteTasks",
+      "effects": ["async", "net:https"]
+    },
+    {
+      "name": "logTaskEvent",
+      "effects": ["io:console"]
+    }
+  ],
+  "capabilities": [
+    "fs:read",
+    "fs:write",
+    "net:https",
+    "io:console"
+  ],
+  "dependency_graph": [
+    "loadTasksFromDisk",
+    "saveTasksToDisk",
+    "filterTasks",
+    "sortByPriority",
+    "logTaskEvent",
+    "Task",
+    "TaskId",
+    "TaskFilter",
+    "TaskEvent"
+  ]
+}
+```
+
+**判断根拠:**
+
+- **pure_functions**: コントラクトが空で、`fs`/`https`/`console` 使用なし (`filterTasks:32`, `sortByPriority:42`, `formatTaskSummary:52`)
+- **effectful_functions**: sema の `capability` コントラクト + ソース上の実際の副作用を突合。`loadTasksFromDisk` は `fs.readFileSync` のみ使用なので `fs:read` のみ（sema が `fs:read,fs:write` 両方を付与しているのは過検出の可能性あり）
+- **capabilities**: sema `capabilities` 配列から重複を除去
+- **dependency_graph**: `TaskManager` クラス本体 (`89-126`) が直接呼び出す関数 (`load:98`, `save:102`, `add:107`, `complete:114`, `getFiltered:120`, `getSorted:124`) と参照する型を抽出

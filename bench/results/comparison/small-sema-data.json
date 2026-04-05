@@ -1,0 +1,47 @@
+{
+  "functions": [
+    {
+      "name": "formatConfig",
+      "kind": "ArrowFunction",
+      "signature": "(config: Config) => string",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "5ff815d51cf12434"
+    },
+    {
+      "name": "loadConfig",
+      "kind": "FunctionDeclaration",
+      "signature": "(path: string) => Config",
+      "purity": "effectful",
+      "effects": [],
+      "capabilities": [
+        "fs:read",
+        "fs:write"
+      ],
+      "syntaxHash": "50b279ca7e6fc589"
+    },
+    {
+      "name": "validateConfig",
+      "kind": "FunctionDeclaration",
+      "signature": "(config: Config) => string[]",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "7b7be0b3871e98ad"
+    }
+  ],
+  "types": [
+    {
+      "name": "Config",
+      "kind": "TypeAliasDeclaration"
+    }
+  ],
+  "imports": [
+    "fs"
+  ],
+  "capabilities": [
+    "fs:read",
+    "fs:write"
+  ]
+}

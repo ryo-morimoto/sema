@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "sema": {
+      "command": "npx",
+      "args": ["tsx", "/home/ryo-morimoto/ghq/github.com/ryo-morimoto/sema/src/mcp/index.ts"]
+    }
+  }
+}

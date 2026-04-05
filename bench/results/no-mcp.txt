@@ -1,0 +1,68 @@
+```json
+{
+  "pure_functions": [
+    "filterTasks",
+    "sortByPriority",
+    "formatTaskSummary"
+  ],
+  "effectful_functions": [
+    {
+      "name": "loadTasksFromDisk",
+      "effects": ["fs:read"]
+    },
+    {
+      "name": "saveTasksToDisk",
+      "effects": ["fs:write"]
+    },
+    {
+      "name": "fetchRemoteTasks",
+      "effects": ["net:https"]
+    },
+    {
+      "name": "logTaskEvent",
+      "effects": ["io:console", "io:clock"]
+    },
+    {
+      "name": "TaskManager.load",
+      "effects": ["fs:read"]
+    },
+    {
+      "name": "TaskManager.save",
+      "effects": ["fs:write"]
+    },
+    {
+      "name": "TaskManager.add",
+      "effects": ["io:console", "io:clock", "state:mutation"]
+    },
+    {
+      "name": "TaskManager.complete",
+      "effects": ["io:console", "io:clock", "state:mutation"]
+    }
+  ],
+  "capabilities": [
+    "fs:read",
+    "fs:write",
+    "net:https",
+    "io:console",
+    "io:clock"
+  ],
+  "dependency_graph": [
+    "Task",
+    "TaskId",
+    "TaskFilter",
+    "TaskEvent",
+    "loadTasksFromDisk",
+    "saveTasksToDisk",
+    "logTaskEvent",
+    "filterTasks",
+    "sortByPriority"
+  ]
+}
+```
+
+**補足:**
+
+- `logTaskEvent` は `new Date()` を呼ぶため `io:clock` も副作用として計上
+- `TaskManager.complete` は `task.completed = true` でオブジェクトを直接変異させる (`state:mutation`)
+- `TaskManager.add` も `this.tasks.push()` で内部状態を変異させる (`state:mutation`)
+- `dependency_graph` は `TaskManager` が直接参照・呼び出す関数・型のみ（推移的な依存は含まない）

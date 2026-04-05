@@ -1,0 +1,58 @@
+コードと sema データを照合して回答します。
+
+**根拠:**
+
+- **純粋関数**: コードを直接読むと `filterTasks`（配列操作のみ）、`sortByPriority`（スプレッドしてソート）、`formatTaskSummary`（文字列生成のみ）は外部副作用なし。sema の capability コントラクトは全関数に `fs:read/write, net:https` が付いているが、これは推論の過剰付与と判断（コードに `fs`/`https` 使用なし）。
+- **副作用関数**: `loadTasksFromDisk`（`fs.readFileSync`）、`saveTasksToDisk`（`fs.writeFileSync`）、`fetchRemoteTasks`（`https.get`）、`logTaskEvent`（`console.log`）。
+- **capabilities**: `fs:read`（readFileSync）、`fs:write`（writeFileSync）、`net:https`（https.get）、`io:console`（console.log）。
+- **dependency_graph**: `TaskManager` のメソッド本体から直接呼び出し・参照しているものを列挙。
+
+```json
+{
+  "pure_functions": [
+    "filterTasks",
+    "sortByPriority",
+    "formatTaskSummary"
+  ],
+  "effectful_functions": [
+    {
+      "name": "loadTasksFromDisk",
+      "effects": ["fs:read", "async"]
+    },
+    {
+      "name": "saveTasksToDisk",
+      "effects": ["fs:write", "async"]
+    },
+    {
+      "name": "fetchRemoteTasks",
+      "effects": ["net:https", "async"]
+    },
+    {
+      "name": "logTaskEvent",
+      "effects": ["io:console"]
+    }
+  ],
+  "capabilities": [
+    "fs:read",
+    "fs:write",
+    "net:https",
+    "io:console"
+  ],
+  "dependency_graph": [
+    "loadTasksFromDisk",
+    "saveTasksToDisk",
+    "logTaskEvent",
+    "filterTasks",
+    "sortByPriority",
+    "Task",
+    "TaskId",
+    "TaskFilter",
+    "TaskEvent"
+  ]
+}
+```
+
+**補足 — sema データとの差異:**
+
+- sema の capability コントラクトは `formatTaskSummary`, `filterTasks`, `sortByPriority`, `logTaskEvent` にも `fs:read/write, net:https` を付与しているが、コードを読むとこれらの関数は `fs`/`https` を直接使用していない。sema の capability 推論が保守的（呼び出し先の伝播または過検出）と判断し、実コードの実態を優先した。
+- `logTaskEvent` の `io:console` は sema データに現れていないが、コード上 `console.log` を呼び出しているため追加した。

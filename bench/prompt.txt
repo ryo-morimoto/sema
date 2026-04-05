@@ -1,0 +1,21 @@
+以下のファイルを分析して、次の4つの質問に回答してください。回答は JSON 形式で返してください。
+
+ファイル: /home/ryo-morimoto/ghq/github.com/ryo-morimoto/sema/bench/target.ts
+
+## 質問
+
+1. **pure_functions**: 副作用を一切持たない純粋関数の名前をリストせよ（配列）
+2. **effectful_functions**: 副作用を持つ関数の名前と、それぞれの副作用の種類を列挙せよ（オブジェクト配列: name, effects[]）
+3. **capabilities**: このファイルが必要とする外部ケイパビリティを列挙せよ（配列: "fs:read", "fs:write", "net:https", "io:console" など）
+4. **dependency_graph**: TaskManager クラスが直接依存している関数・型の名前をリストせよ（配列）
+
+## 出力形式
+
+```json
+{
+  "pure_functions": [...],
+  "effectful_functions": [{"name": "...", "effects": [...]}],
+  "capabilities": [...],
+  "dependency_graph": [...]
+}
+```

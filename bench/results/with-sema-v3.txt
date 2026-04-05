@@ -1,0 +1,55 @@
+提供された sema 分析結果から直接回答します。
+
+```json
+{
+  "pure_functions": [
+    "formatTaskSummary",
+    "filterTasks",
+    "sortByPriority"
+  ],
+  "effectful_functions": [
+    {
+      "name": "TaskManager",
+      "effects": []
+    },
+    {
+      "name": "fetchRemoteTasks",
+      "effects": ["async", "net:https"]
+    },
+    {
+      "name": "loadTasksFromDisk",
+      "effects": ["async", "fs:read", "fs:write"]
+    },
+    {
+      "name": "logTaskEvent",
+      "effects": ["io:console"]
+    },
+    {
+      "name": "saveTasksToDisk",
+      "effects": ["async", "fs:read", "fs:write"]
+    }
+  ],
+  "capabilities": [
+    "fs:read",
+    "fs:write",
+    "io:console",
+    "net:https"
+  ],
+  "dependency_graph": [
+    "Task",
+    "TaskEvent",
+    "TaskFilter",
+    "TaskId",
+    "filterTasks",
+    "loadTasksFromDisk",
+    "logTaskEvent",
+    "saveTasksToDisk",
+    "sortByPriority"
+  ]
+}
+```
+
+**補足:**
+
+- `effectful_functions` の `effects` は sema の `effects` フィールド（`"async"` 等）とケイパビリティ（`"fs:read"` 等）を統合して列挙しました。`TaskManager` はクラスのため `effects: []` ですが、依存する関数群が副作用を持ちます。
+- `loadTasksFromDisk` の capabilities が `fs:read` と `fs:write` 両方になっている点は、sema の出力そのままです（read-only なら `fs:read` のみが期待値ですが、分析結果に従っています）。

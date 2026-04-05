@@ -1,0 +1,1 @@
+You cannot use --strict-mcp-config when an enterprise MCP config is present

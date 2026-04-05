@@ -1,0 +1,417 @@
+{
+  "summary": {
+    "nodeCount": 28,
+    "definitionCount": 13,
+    "contractCount": 9,
+    "diagnosticCount": 0
+  },
+  "nodes": [
+    {
+      "id": "0a07497acc44d0ef",
+      "kind": "ArrowFunction",
+      "name": "formatTaskSummary",
+      "syntaxHash": "0a07497acc44d0ef",
+      "semanticHash": "321e193df4015181",
+      "childCount": 0,
+      "children": [],
+      "contracts": [],
+      "definition": {
+        "exportNames": [],
+        "isDefault": false
+      }
+    },
+    {
+      "id": "657fc8e1bba20439",
+      "kind": "ClassDeclaration",
+      "name": "TaskManager",
+      "syntaxHash": "657fc8e1bba20439",
+      "semanticHash": "c9459e5eb9e36be5",
+      "childCount": 9,
+      "children": [
+        {
+          "kind": "FunctionDeclaration",
+          "name": "add"
+        },
+        {
+          "kind": "FunctionDeclaration",
+          "name": "complete"
+        },
+        {
+          "kind": "FunctionDeclaration",
+          "name": "getFiltered"
+        },
+        {
+          "kind": "FunctionDeclaration",
+          "name": "getSorted"
+        },
+        {
+          "kind": "FunctionDeclaration",
+          "name": "load"
+        },
+        {
+          "kind": "FunctionDeclaration",
+          "name": "save"
+        },
+        {
+          "kind": "VariableDeclaration",
+          "name": "constructor"
+        },
+        {
+          "kind": "VariableDeclaration",
+          "name": "filePath"
+        },
+        {
+          "kind": "VariableDeclaration",
+          "name": "tasks"
+        }
+      ],
+      "contracts": [],
+      "definition": {
+        "exportNames": [
+          "TaskManager"
+        ],
+        "isDefault": false
+      }
+    },
+    {
+      "id": "a243226ad268b778",
+      "kind": "EnumDeclaration",
+      "name": "TaskEvent",
+      "syntaxHash": "a243226ad268b778",
+      "semanticHash": "95c8b86b3491255c",
+      "childCount": 4,
+      "children": [
+        {
+          "kind": "VariableDeclaration",
+          "name": "Completed"
+        },
+        {
+          "kind": "VariableDeclaration",
+          "name": "Created"
+        },
+        {
+          "kind": "VariableDeclaration",
+          "name": "Deleted"
+        },
+        {
+          "kind": "VariableDeclaration",
+          "name": "Updated"
+        }
+      ],
+      "contracts": [],
+      "definition": {
+        "exportNames": [
+          "TaskEvent"
+        ],
+        "isDefault": false
+      }
+    },
+    {
+      "id": "c38a1f8d4a704343",
+      "kind": "FunctionDeclaration",
+      "name": "fetchRemoteTasks",
+      "syntaxHash": "c38a1f8d4a704343",
+      "semanticHash": "3f3a1bf53f6c8184",
+      "childCount": 0,
+      "children": [],
+      "contracts": [
+        {
+          "kind": "effect",
+          "async": true,
+          "errorTypes": []
+        },
+        {
+          "kind": "capability",
+          "grants": [
+            "net:https"
+          ]
+        }
+      ],
+      "definition": {
+        "exportNames": [
+          "fetchRemoteTasks"
+        ],
+        "isDefault": false
+      }
+    },
+    {
+      "id": "e8c457f3df358ba6",
+      "kind": "FunctionDeclaration",
+      "name": "filterTasks",
+      "syntaxHash": "e8c457f3df358ba6",
+      "semanticHash": "ef8c13d2b5cc2ffc",
+      "childCount": 0,
+      "children": [],
+      "contracts": [],
+      "definition": {
+        "exportNames": [
+          "filterTasks"
+        ],
+        "isDefault": false
+      }
+    },
+    {
+      "id": "48cd95e7b5665bdf",
+      "kind": "FunctionDeclaration",
+      "name": "loadTasksFromDisk",
+      "syntaxHash": "48cd95e7b5665bdf",
+      "semanticHash": "4c758b0dce3d5ecb",
+      "childCount": 0,
+      "children": [],
+      "contracts": [
+        {
+          "kind": "effect",
+          "async": true,
+          "errorTypes": []
+        },
+        {
+          "kind": "capability",
+          "grants": [
+            "fs:read",
+            "fs:write"
+          ]
+        }
+      ],
+      "definition": {
+        "exportNames": [
+          "loadTasksFromDisk"
+        ],
+        "isDefault": false
+      }
+    },
+    {
+      "id": "2dada3602af63ed5",
+      "kind": "FunctionDeclaration",
+      "name": "logTaskEvent",
+      "syntaxHash": "2dada3602af63ed5",
+      "semanticHash": "0be0c8662834ca12",
+      "childCount": 0,
+      "children": [],
+      "contracts": [
+        {
+          "kind": "capability",
+          "grants": [
+            "io:console"
+          ]
+        }
+      ],
+      "definition": {
+        "exportNames": [
+          "logTaskEvent"
+        ],
+        "isDefault": false
+      }
+    },
+    {
+      "id": "683169afd3c57bff",
+      "kind": "FunctionDeclaration",
+      "name": "saveTasksToDisk",
+      "syntaxHash": "683169afd3c57bff",
+      "semanticHash": "5c6d898e560b9bf4",
+      "childCount": 0,
+      "children": [],
+      "contracts": [
+        {
+          "kind": "effect",
+          "async": true,
+          "errorTypes": []
+        },
+        {
+          "kind": "capability",
+          "grants": [
+            "fs:read",
+            "fs:write"
+          ]
+        }
+      ],
+      "definition": {
+        "exportNames": [
+          "saveTasksToDisk"
+        ],
+        "isDefault": false
+      }
+    },
+    {
+      "id": "e12baf713686c881",
+      "kind": "FunctionDeclaration",
+      "name": "sortByPriority",
+      "syntaxHash": "e12baf713686c881",
+      "semanticHash": "745d308aad76b488",
+      "childCount": 0,
+      "children": [],
+      "contracts": [],
+      "definition": {
+        "exportNames": [
+          "sortByPriority"
+        ],
+        "isDefault": false
+      }
+    },
+    {
+      "id": "f0f14d7dbb715ecb",
+      "kind": "InterfaceDeclaration",
+      "name": "Task",
+      "syntaxHash": "f0f14d7dbb715ecb",
+      "semanticHash": "68f2fd87d0bd3ca0",
+      "childCount": 0,
+      "children": [],
+      "contracts": [],
+      "definition": {
+        "exportNames": [
+          "Task"
+        ],
+        "isDefault": false
+      }
+    },
+    {
+      "id": "04794aa619cdcd44",
+      "kind": "InterfaceDeclaration",
+      "name": "TaskFilter",
+      "syntaxHash": "04794aa619cdcd44",
+      "semanticHash": "bea2d3be316068a4",
+      "childCount": 0,
+      "children": [],
+      "contracts": [],
+      "definition": {
+        "exportNames": [
+          "TaskFilter"
+        ],
+        "isDefault": false
+      }
+    },
+    {
+      "id": "8b363bf0b760c01a",
+      "kind": "TypeAliasDeclaration",
+      "name": "Priority",
+      "syntaxHash": "8b363bf0b760c01a",
+      "semanticHash": "1688391f16bbc473",
+      "childCount": 0,
+      "children": [],
+      "contracts": [],
+      "definition": {
+        "exportNames": [
+          "Priority"
+        ],
+        "isDefault": false
+      }
+    },
+    {
+      "id": "31e94f99d0a83e1b",
+      "kind": "TypeAliasDeclaration",
+      "name": "TaskId",
+      "syntaxHash": "31e94f99d0a83e1b",
+      "semanticHash": "8796e0b82605fa02",
+      "childCount": 0,
+      "children": [],
+      "contracts": [],
+      "definition": {
+        "exportNames": [
+          "TaskId"
+        ],
+        "isDefault": false
+      }
+    }
+  ],
+  "contracts": [
+    {
+      "kind": "effect",
+      "id": "effect_1",
+      "subjectIds": [
+        "c244ae9d3c943188"
+      ],
+      "async": true,
+      "errorTypes": [],
+      "successType": "() => void"
+    },
+    {
+      "kind": "effect",
+      "id": "effect_2",
+      "subjectIds": [
+        "b92633366954ef77"
+      ],
+      "async": true,
+      "errorTypes": [],
+      "successType": "() => void"
+    },
+    {
+      "kind": "effect",
+      "id": "effect_3",
+      "subjectIds": [
+        "c38a1f8d4a704343"
+      ],
+      "async": true,
+      "errorTypes": [],
+      "successType": "(url: string) => Task[]"
+    },
+    {
+      "kind": "effect",
+      "id": "effect_4",
+      "subjectIds": [
+        "48cd95e7b5665bdf"
+      ],
+      "async": true,
+      "errorTypes": [],
+      "successType": "(path: string) => Task[]"
+    },
+    {
+      "kind": "effect",
+      "id": "effect_5",
+      "subjectIds": [
+        "683169afd3c57bff"
+      ],
+      "async": true,
+      "errorTypes": [],
+      "successType": "(path: string, tasks: Task[]) => void"
+    },
+    {
+      "kind": "capability",
+      "id": "capability_1",
+      "subjectIds": [
+        "c38a1f8d4a704343"
+      ],
+      "grants": [
+        "net:https"
+      ]
+    },
+    {
+      "kind": "capability",
+      "id": "capability_2",
+      "subjectIds": [
+        "48cd95e7b5665bdf"
+      ],
+      "grants": [
+        "fs:read",
+        "fs:write"
+      ]
+    },
+    {
+      "kind": "capability",
+      "id": "capability_3",
+      "subjectIds": [
+        "2dada3602af63ed5"
+      ],
+      "grants": [
+        "io:console"
+      ]
+    },
+    {
+      "kind": "capability",
+      "id": "capability_4",
+      "subjectIds": [
+        "683169afd3c57bff"
+      ],
+      "grants": [
+        "fs:read",
+        "fs:write"
+      ]
+    }
+  ],
+  "capabilities": [
+    "net:https",
+    "fs:read",
+    "fs:write",
+    "io:console",
+    "fs:read",
+    "fs:write"
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "functions": [
+    {
+      "name": "formatTaskSummary",
+      "kind": "ArrowFunction",
+      "signature": "(task: Task) => string",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "0a07497acc44d0ef"
+    },
+    {
+      "name": "TaskManager",
+      "kind": "ClassDeclaration",
+      "signature": "typeof TaskManager",
+      "purity": "effectful",
+      "effects": [],
+      "capabilities": [],
+      "dependsOn": [
+        "Task",
+        "TaskEvent",
+        "TaskFilter",
+        "TaskId",
+        "filterTasks",
+        "loadTasksFromDisk",
+        "logTaskEvent",
+        "saveTasksToDisk",
+        "sortByPriority"
+      ],
+      "syntaxHash": "657fc8e1bba20439"
+    },
+    {
+      "name": "fetchRemoteTasks",
+      "kind": "FunctionDeclaration",
+      "signature": "(url: string) => Promise<Task[]>",
+      "purity": "effectful",
+      "effects": [
+        "async"
+      ],
+      "capabilities": [
+        "net:https"
+      ],
+      "syntaxHash": "c38a1f8d4a704343"
+    },
+    {
+      "name": "filterTasks",
+      "kind": "FunctionDeclaration",
+      "signature": "(tasks: Task[], filter: TaskFilter) => Task[]",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "e8c457f3df358ba6"
+    },
+    {
+      "name": "loadTasksFromDisk",
+      "kind": "FunctionDeclaration",
+      "signature": "(path: string) => Promise<Task[]>",
+      "purity": "effectful",
+      "effects": [
+        "async"
+      ],
+      "capabilities": [
+        "fs:read",
+        "fs:write"
+      ],
+      "syntaxHash": "48cd95e7b5665bdf"
+    },
+    {
+      "name": "logTaskEvent",
+      "kind": "FunctionDeclaration",
+      "signature": "(event: TaskEvent, task: Task) => void",
+      "purity": "effectful",
+      "effects": [],
+      "capabilities": [
+        "io:console"
+      ],
+      "syntaxHash": "2dada3602af63ed5"
+    },
+    {
+      "name": "saveTasksToDisk",
+      "kind": "FunctionDeclaration",
+      "signature": "(path: string, tasks: Task[]) => Promise<void>",
+      "purity": "effectful",
+      "effects": [
+        "async"
+      ],
+      "capabilities": [
+        "fs:read",
+        "fs:write"
+      ],
+      "syntaxHash": "683169afd3c57bff"
+    },
+    {
+      "name": "sortByPriority",
+      "kind": "FunctionDeclaration",
+      "signature": "(tasks: Task[]) => Task[]",
+      "purity": "pure",
+      "effects": [],
+      "capabilities": [],
+      "syntaxHash": "e12baf713686c881"
+    }
+  ],
+  "types": [
+    {
+      "name": "TaskEvent",
+      "kind": "EnumDeclaration"
+    },
+    {
+      "name": "Task",
+      "kind": "InterfaceDeclaration"
+    },
+    {
+      "name": "TaskFilter",
+      "kind": "InterfaceDeclaration"
+    },
+    {
+      "name": "Priority",
+      "kind": "TypeAliasDeclaration"
+    },
+    {
+      "name": "TaskId",
+      "kind": "TypeAliasDeclaration"
+    }
+  ],
+  "imports": [
+    "fs",
+    "https"
+  ],
+  "capabilities": [
+    "fs:read",
+    "fs:write",
+    "io:console",
+    "net:https"
+  ]
+}
